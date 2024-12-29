@@ -9,4 +9,4 @@ sudo apt-get update
 sudo apt-get install libedgetpu1-std
 
 
-rtsp://admin:3r@s8J2ADKYhtNU8@10.54.14.1:554/Streaming/Channels/101 
+rtsp://admin:password@n.n.n.n:554/Streaming/Channels/101 
