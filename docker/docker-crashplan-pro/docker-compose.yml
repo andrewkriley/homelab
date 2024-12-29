@@ -1,0 +1,41 @@
+services:
+  crashplan-pro:
+    image: jlesage/crashplan-pro
+    ports:
+      - 5800:5800
+    volumes:
+      - ./config:/config:rw
+      - truenas_media:/storage/truenas_media:ro
+      - truenas_home:/storage/truenas_home:ro
+      - truenas_backup:/storage/truenas_backup:ro
+      - truenas_app:/storage/truenas_app:ro
+    environment:
+      - TZ=Australia/Sydney
+      - LANG=en_AU.UTF-8
+      - CRASHPLAN_SRV_MAX_MEM=4096M
+
+volumes:
+  truenas_media:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=${NFSSERVER},rw,noatime,rsize=8192,wsize=8192,tcp,timeo=14,nfsvers=4
+      device: :/mnt/DATA/MEDIA
+  truenas_home:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=${NFSSERVER},rw,noatime,rsize=8192,wsize=8192,tcp,timeo=14,nfsvers=4
+      device: :/mnt/DATA/HOME
+  truenas_backup:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=${NFSSERVER},rw,noatime,rsize=8192,wsize=8192,tcp,timeo=14,nfsvers=4
+      device: :/mnt/DATA/BACKUP
+  truenas_app:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=${NFSSERVER},rw,noatime,rsize=8192,wsize=8192,tcp,timeo=14,nfsvers=4
+      device: :/mnt/HOSTING/APP
