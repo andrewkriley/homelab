@@ -7,6 +7,7 @@ services:
             - OLLAMA_BASE_URL=${OLLAMA_BASE_URL}
             - AUTOMATIC1111_BASE_URL=${AUTOMATIC1111_BASE_URL}
             - ENABLE_IMAGE_GENERATION=True
+            - TZ=${TZ}
         deploy:
             resources:
                 reservations:
