@@ -8,11 +8,11 @@ sudo reboot
 sudo apt install git
 
 #configure git
-git config --global user.email "andrew@andrewriley.info"
-git config --global user.name "Andrew Riley"
+git config --global user.email "youremail here
+git config --global user.name "your name here"
 
 #configure ssh PKI
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -q -N "" -C "andrew@andrewriley.info"
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -q -N "" -C "email goes here"
 
 
 #install docker
