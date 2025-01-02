@@ -1,8 +1,9 @@
 services:
   test:
     image: ubuntu
-    command: printenv TZ NFSSERVER LOCALVAR
+    command: printenv GLOBALVARFILE LOCALVARFILE LOCALVAR TZ NFSSERVER
     env_file:
       - ../.env.global
     environment:
-      - LOCALVAR=test2
+      - LOCALVARFILE=${LOCALVARFILE}
+      - LOCALVAR=local_var_value
