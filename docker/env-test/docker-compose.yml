@@ -3,7 +3,7 @@ services:
     image: ubuntu
     command: printenv GLOBALVARFILE LOCALVARFILE LOCALVAR TZ NFSSERVER
     env_file:
-      - ../.env.global
+      - /home/$USER/dev/homelab/docker/.env.global
     environment:
       - LOCALVARFILE=${LOCALVARFILE}
       - LOCALVAR=local_var_value
