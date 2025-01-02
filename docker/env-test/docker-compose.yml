@@ -1,0 +1,8 @@
+services:
+  test:
+    image: ubuntu
+    command: printenv TZ NFSSERVER LOCALVAR
+    env_file:
+      - ../.env.global
+    environment:
+      - LOCALVAR=test2
