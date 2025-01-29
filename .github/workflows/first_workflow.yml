@@ -1,5 +1,6 @@
 #comment: This is a simple workflow that deploys the code to the self-hosted runner
 #comment: when a push event is triggered on the main branch.
+#commetn: This workflow contains a single job called 'deploy' that runs on the self-hosted runner.
 name: first workflow
 
 on:
