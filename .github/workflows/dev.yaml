@@ -3,7 +3,7 @@ name: Development Workflow Runner
 on:
   push:
     branches:
-      - development
+      - dev
 
 jobs: 
   deploy:
