@@ -1,0 +1,17 @@
+#Workflow to checkout the dev branch
+name: Development Workflow Runner
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs: 
+  deploy:
+    runs-on: "self-hosted"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: dev
+          path: dev
