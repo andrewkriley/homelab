@@ -1,0 +1,17 @@
+name: Development Workflow Runner
+
+on:
+  push:
+    branches:
+      - development
+
+jobs: 
+  deploy:
+    runs-on: "self-hosted"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: 
+        run: |
+          echo "docker step 1"
+          docker ps
