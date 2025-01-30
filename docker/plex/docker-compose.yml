@@ -1,0 +1,41 @@
+services:
+  plex:
+    container_name: plex
+    image: plexinc/pms-docker
+    restart: unless-stopped
+    ports:
+      - 32400:32400/tcp
+      - 8324:8324/tcp
+      - 32469:32469/tcp
+      - 1900:1900/udp
+      - 32410:32410/udp
+      - 32412:32412/udp
+      - 32413:32413/udp
+      - 32414:32414/udp
+    runtime: nvidia
+    deploy:    # <------------- Add this section for NVIDIA GPU Support ------------->
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              #device_ids: ['0'] # this is only needed when using multiple GPUs
+              count: 1 # number of GPUs
+              capabilities: [gpu]
+    environment:
+      - TZ=${TZ}
+      - PLEX_CLAIM=${PLEX_CLAIM}
+      - ADVERTISE_IP=${ADVERTISE_IP}
+      - NVIDIA_VISIBLE_DEVICES=ALL
+    hostname: pms-docker
+    volumes:
+       - ./config/:/config
+       - ./transcode/:/transcode
+       - nfs_media:/media
+
+volumes:
+  nfs_media:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=${NFS_SERVER},rw,noatime,rsize=8192,wsize=8192,tcp,timeo=14,nfsvers=4
+      device: :/your/nfs/path

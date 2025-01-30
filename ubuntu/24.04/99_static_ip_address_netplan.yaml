@@ -1,0 +1,17 @@
+# yaml file placed in /etc/netplan
+# mv 50-cloud-init.yaml to 50-cloud-init.yaml.bak
+# update 'ethernets' to match the NIC in the server
+
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eno1:
+      addresses:
+        - A.B.C.D/nn
+      routes:
+        - to: default
+          via: N.N.N.n
+      nameservers:
+          search: [yourdomainnamegoeshere.com]
+          addresses: [X.X.X.X, Y.Y.Y.Y]

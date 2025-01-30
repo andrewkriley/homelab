@@ -1,0 +1,29 @@
+name: open-webui
+services:
+    open-webui:
+        ports:
+            - 3000:8080
+        environment:
+            - OLLAMA_BASE_URL=${OLLAMA_BASE_URL}
+            - AUTOMATIC1111_BASE_URL=${AUTOMATIC1111_BASE_URL}
+            - ENABLE_IMAGE_GENERATION=True
+            - TZ=${TZ}
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - driver: nvidia
+                          count: all
+                          capabilities:
+                              - gpu
+        extra_hosts:
+            - host.docker.internal:host-gateway
+        volumes:
+            - open-webui:/app/backend/data
+        container_name: open-webui
+        restart: always
+        image: ghcr.io/open-webui/open-webui:latest-cuda
+volumes:
+    open-webui:
+        external: true
+        name: open-webui

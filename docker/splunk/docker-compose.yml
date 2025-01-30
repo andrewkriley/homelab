@@ -1,0 +1,13 @@
+name: splunk
+services:
+    splunk:
+        ports:
+            - 8000:8000
+            - 9997:9997
+        environment:
+            - SPLUNK_START_ARGS=--accept-license
+            - SPLUNK_PASSWORD=${SPLUNK_PASSWORD}
+            - TZ=${TZ}
+        container_name: splunk
+        image: splunk/splunk:latest
+        restart: unless-stopped
