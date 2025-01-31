@@ -1,5 +1,5 @@
 #Workflow to checkout the main branch
-name: Manual Workflow Runner
+name: Manual Workflow - install Docker
 
 on:
   workflow_dispatch:
