@@ -9,7 +9,7 @@ NFS_PORT = 2049                 # NFS typically uses port 2049
 def check_nfs():
     try:
         # Use nc to check if the NFS port is open
-        subprocess.check_output(['nc', '-z', NFS_SERVER, str(NFS_PORT)])
+        subprocess.check_output(['nc', '-z', '-w1', NFS_SERVER, str(NFS_PORT)])
         return True
     except subprocess.CalledProcessError:
         return False
