@@ -3,8 +3,8 @@ import subprocess
 
 app = Flask(__name__)
 
-NFS_SERVER = '10.54.5.30'  # Replace with your NFS server address
-NFS_PORT = 2049                 # NFS typically uses port 2049
+NFS_SERVER = '192.168.1.1'   # Replace with your NFS server address
+NFS_PORT = 2049               # NFS typically uses port 2049
 
 def check_nfs():
     try:

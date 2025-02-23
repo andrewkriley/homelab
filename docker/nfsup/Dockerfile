@@ -2,7 +2,7 @@
 FROM python:3.9-slim
 
 # Set environment variables
-ENV NFS_SERVER=10.54.5.30
+ENV NFS_SERVER=192.168.1.1
 ENV NFS_PORT=2049
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
@@ -13,7 +13,6 @@ RUN pip install --no-cache-dir flask
 # Install netcat-traditional
 RUN apt-get update && \
     apt-get install -y netcat-traditional && \
-    apt-get install -y curl && \
     rm -rf /var/lib/apt/lists/*
 
 # Create working directory
@@ -26,10 +25,9 @@ COPY app.py /app/
 EXPOSE 80
 
 # Define the health check command
-HEALTHCHECK \
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
   CMD nc -z -w1 ${NFS_SERVER} ${NFS_PORT} || exit 1
-#HEALTHCHECK --interval=30s --timeout=3s \
-#  CMD curl -f http://localhost/ || exit 1
 
 # Run the application
 CMD ["python", "app.py"]
+EXPOSE 80
