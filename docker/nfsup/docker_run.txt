@@ -1,0 +1,1 @@
+docker run -e NFS_SERVER=10.54.7.1 -e NFS_PORT=8091 -d -p 80:80 --name nfsup nfsup

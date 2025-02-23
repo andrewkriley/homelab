@@ -1,10 +1,11 @@
 from flask import Flask, jsonify
 import subprocess
+import os
 
 app = Flask(__name__)
 
-NFS_SERVER = '192.168.1.1'   # Replace with your NFS server address
-NFS_PORT = 2049               # NFS typically uses port 2049
+NFS_SERVER = (os.environ.get('NFS_SERVER'))  # Replace with your NFS server address
+NFS_PORT = (os.environ.get('NFS_PORT'))              # NFS typically uses port 2049
 
 def check_nfs():
     try:
