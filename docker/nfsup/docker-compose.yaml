@@ -3,7 +3,7 @@ services:
     image: nfsup:latest
     restart: unless-stopped
     environment:
-      - NFS_SERVER=${NFS_SERVER}
-      - NFS_PORT=${NFS_PORT}
+      NFS_SERVER: ${NFS_SERVER}
+      NFS_PORT: ${NFS_PORT}
     ports:
     - 80:80

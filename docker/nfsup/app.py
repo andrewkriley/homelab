@@ -7,6 +7,9 @@ app = Flask(__name__)
 NFS_SERVER = (os.environ.get('NFS_SERVER'))  # Replace with your NFS server address
 NFS_PORT = (os.environ.get('NFS_PORT'))              # NFS typically uses port 2049
 
+print(NFS_SERVER)
+print(NFS_PORT)
+
 def check_nfs():
     try:
         # Use nc to check if the NFS port is open
