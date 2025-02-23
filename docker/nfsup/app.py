@@ -22,33 +22,39 @@ def check_nfs():
 @app.route('/')
 def status():
     if check_nfs():
-        status = 'NFS Server ${NFS_SERVER} using port ${NFS_PORT} is available'
+        status = 'NFS is available'
         color = 'green'
     else:
-        status = 'NFS Server ${NFS_SERVER} using port ${NFS_PORT} is unavailable'
+        status = 'NFS is unavailable'
         color = 'red'
     
-    # HTML template with formatting
+    # HTML template with formatting and variables
     html_template = """
     <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="refresh" content="20">
         <title>NFS Status</title>
         <style>
             .status {
                 font-size: 24px;
                 color: {{ color }};
             }
+            .details {
+                font-size: 18px;
+            }
         </style>
     </head>
     <body>
         <h1 class="status">{{ status }}</h1>
+        <p class="details">NFS Server: {{ nfs_server }}</p>
+        <p class="details">NFS Port: {{ nfs_port }}</p>
     </body>
     </html>
     """
-    return render_template_string(html_template, status=status, color=color)
+    return render_template_string(html_template, status=status, color=color, nfs_server=NFS_SERVER, nfs_port=NFS_PORT)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)
