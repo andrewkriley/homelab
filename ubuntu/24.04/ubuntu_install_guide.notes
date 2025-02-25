@@ -90,6 +90,17 @@ sudo apt-get install -y nvidia-container-toolkit
 
 ## DISABLE UBUNTU LOCAL RESOLVER
 
+Update /etc/systemd/resolved.conf  , set the following
+
+[Resolve]
+
+DNS=10.54.7.1
+FallbackDNS=10.54.13.1
+DNSStubListener=no
+
+service systemd-resolved stop
+
+
 sudo systemctl disable --now systemd-resolved
 sudo systemctl stop systemd-resolved
 sudo rm /etc/resolv.conf
