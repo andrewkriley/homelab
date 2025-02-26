@@ -90,8 +90,6 @@ sudo apt-get install -y nvidia-container-toolkit
 
 ## DISABLE UBUNTU LOCAL RESOLVER
 
-Maybe DON"T DO THIS ANYMORE
-
 sudo systemctl disable --now systemd-resolved
 sudo systemctl stop systemd-resolved
 sudo rm /etc/resolv.conf
